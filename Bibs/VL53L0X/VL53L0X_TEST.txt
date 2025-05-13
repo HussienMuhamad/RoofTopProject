@@ -1,0 +1,22 @@
+# More details can be found in TechToTinker.blogspot.com 
+# George Bantique | tech.to.tinker@gmail.com
+
+from vl53l0x import VL53L0X
+from machine import I2C
+from machine import Pin
+from time import ticks_ms
+
+led = Pin(2, Pin.OUT)
+
+I2C_bus = I2C(0, sda=Pin(21), scl=Pin(22))
+tof = VL53L0X(I2C_bus)
+timer_start = ticks_ms()
+
+while True:
+    tof.start()
+    distance = tof.read()
+    tof.stop()
+    
+    if ticks_ms() - timer_start >= distance:
+        led.value(not led.value())
+        timer_start = ticks_ms()
