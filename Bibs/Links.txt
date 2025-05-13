@@ -1,0 +1,3 @@
+https://github.com/mcauser/awesome-micropython?tab=readme-ov-file        #full list
+
+https://github.com/QuirkyCort/IoTy/tree/main/public/extensions           #relevant sensor lib
